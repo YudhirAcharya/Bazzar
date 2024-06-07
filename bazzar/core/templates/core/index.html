@@ -6,15 +6,15 @@ Home
 
 {% block content %}
 <div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
-  <h2 class="mb-12 text-2xl text-center">New Picks!</h2>
+  <h2 class="mb-12 text-2xl text-center">New Picks</h2>
   <div class="grid grid-cols-3 gap-3">
     {% for item in items %}
     <div>
-      <a href="#">
-        <div>
+      <a href="{% url 'item:detail' item.id %}" class="flex flex-col h-full">
+        <div class="">
           <img src="{{item.image.url}}" alt="" class="rounded-t-xl">
         </div>
-        <div class="p-6 bg-white rounded-b-xl">
+        <div class="p-6 bg-white rounded-b-xl flex-grow flex flex-col">
           <h2 class="text-2xl">{{item.name}}</h2>
           <h2 class="text-red-500">Rs {{item.price}}</h2>
         </div>
@@ -22,5 +22,22 @@ Home
     </div>
     {% endfor%}
   </div>
+</div>
+
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+  <h2 class="mb-12 text-2xl text-center">Categories</h2>
+    <div class="grid grid-cols-3 gap-3">
+      {% for category in categories %}
+      <div>
+      <a href="#" class="flex flex-col h-full">
+        
+        <div class="p-6 bg-white rounded-b-xl flex-grow flex flex-col">
+          <h2 class="text-2xl">{{category.name}}</h2>
+          <h2 class="text-red-500">Items: {{category.items.count}}</h2>
+        </div>
+      </a>
+    </div>
+      {% endfor %}
+    </div>
 </div>
 {% endblock %}
