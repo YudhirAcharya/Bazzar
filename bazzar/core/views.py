@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from item.models import Category, Item
 # Create your views here.
-from .forms import SignupForm
+from .forms import SignupForm, LoginForm
 
 def index(request):
     items = Item.objects.filter(is_sold = False)[0:6]
